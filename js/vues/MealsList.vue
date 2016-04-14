@@ -20,6 +20,9 @@
 
 <script>
     export default {
-        props: ['json']
+        props: ['json'],
+        ready: function() {
+            console.log('WTF');
+        }
     }
 </script>
