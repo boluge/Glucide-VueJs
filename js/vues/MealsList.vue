@@ -26,3 +26,4 @@
         }
     }
 </script>
+<!--https://laracasts.com/discuss/channels/general-discussion/vuejs-1-->
