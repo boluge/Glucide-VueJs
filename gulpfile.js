@@ -4,41 +4,29 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var webpack     = require('webpack-stream');
-var watch       = require('gulp-watch');
+var uglify      = require('gulp-uglify');
 var batch       = require('gulp-batch');
 var connect     = require('gulp-connect');
 var copy        = require('gulp-copy');
 
 // Run webpack
 gulp.task('webpack', function(){
-  return gulp.src('src/main.js')
+  return gulp.src('js/main.js')
     .pipe(webpack( require('./webpack.config.js') ))
-    .pipe(gulp.dest('dist/js/'))
+    .pipe(uglify())
+    .pipe(gulp.dest('js/dist'))
     .pipe(connect.reload());
 });
 
-// Run the webserver
-gulp.task('webserver', function() {
-  connect.server({
-    livereload: true,
-    root: 'dist'
-  });
-});
-
-// Copy index.html file
-gulp.task('build.index', function(){
-  return gulp.src('./src/index.html')
-    .pipe(gulp.dest('./dist'));
-});
-
 gulp.task('watch', function() {
-
     browserSync.init({
         server: {
             baseDir: "./"
         }
     });
-
-    //gulp.watch("app/scss/*.scss", ['sass']);
-    gulp.watch("*.html").on('change', browserSync.reload);
+    gulp.watch(['js/*.js', '!js/dist/*.js'], ['webpack']);
+    gulp.watch('*.html').on('change', browserSync.reload);
+    gulp.watch('js/dist/app.js').on('change', browserSync.reload);
 });
+
+gulp.task('default', ['webpack','watch'],function(){});
