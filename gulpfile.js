@@ -24,7 +24,7 @@ gulp.task('watch', function() {
             baseDir: "./"
         }
     });
-    gulp.watch(['js/*.js', '!js/dist/*.js'], ['webpack']);
+    gulp.watch(['js/*.js', 'js/vue/*.vue', '!js/dist/*.js'], ['webpack']);
     gulp.watch('*.html').on('change', browserSync.reload);
     gulp.watch('js/dist/app.js').on('change', browserSync.reload);
 });
