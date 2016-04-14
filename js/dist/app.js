@@ -10110,7 +10110,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] js/vues/MealsList.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(10)
+	__vue_template__ = __webpack_require__(12)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10448,13 +10448,36 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _Json = __webpack_require__(10);
+
+	var _Json2 = _interopRequireDefault(_Json);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	    props: ['json'],
+	    data: function data() {
+	        return {
+	            meals: new _Json2.default(this.json)
+	        };
+	    },
+
+	    computed: {
+	        toto: function toto() {
+	            return 'Yo ça marche !';
+	        }
+	    }
+	};
+	// </script>
+	// <!--https://laracasts.com/discuss/channels/general-discussion/vuejs-1-->
 	// <style>
 	// .mealslist {
 	//     margin: 30px;
@@ -10472,23 +10495,55 @@
 	//         <h2>Nom du repas</h2>
 	//         <p>Glycémie + color + date + heure ++</p>
 	//         <p>Adresse du json : <a href="{{json}}">{{json}}</a></p>
-	//         <p>{{toto}}</p>
+	//         <p>{{meals}}</p>
 	//     </div>
 	// </template>
 	//
 	// <script>
-	exports.default = {
-	    props: ['json', 'meals', 'toto'],
-	    ready: function ready() {}
-	};
-	// </script>
-	// <!--https://laracasts.com/discuss/channels/general-discussion/vuejs-1-->
 
 /***/ },
 /* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(11);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Json = function Json(json) {
+	    (0, _classCallCheck3.default)(this, Json);
+
+	    this.json = json;
+	};
+
+	exports.default = Json;
+
+/***/ },
+/* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"mealslist\">\n    <h2>Nom du repas</h2>\n    <p>Glycémie + color + date + heure ++</p>\n    <p>Adresse du json : <a href=\"{{json}}\">{{json}}</a></p>\n    <p>{{toto}}</p>\n</div>\n";
+	"use strict";
+
+	exports.__esModule = true;
+
+	exports.default = function (instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"mealslist\">\n    <h2>Nom du repas</h2>\n    <p>Glycémie + color + date + heure ++</p>\n    <p>Adresse du json : <a href=\"{{json}}\">{{json}}</a></p>\n    <p>{{meals}}</p>\n</div>\n";
 
 /***/ }
 /******/ ]);

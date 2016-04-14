@@ -15,14 +15,23 @@
         <h2>Nom du repas</h2>
         <p>Glycémie + color + date + heure ++</p>
         <p>Adresse du json : <a href="{{json}}">{{json}}</a></p>
-        <p>{{toto}}</p>
+        <p>{{meals}}</p>
     </div>
 </template>
 
 <script>
+    import Json from '../class/Json.js'
     export default {
-        props: ['json','meals','toto'],
-        ready: function() {
+        props: ['json'],
+        data() {
+            return {
+                meals: new Json(this.json)
+            }
+        },
+        computed: {
+            toto () {
+                return 'Yo ça marche !'
+            }
 
         }
     }
