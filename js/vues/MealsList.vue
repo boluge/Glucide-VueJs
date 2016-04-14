@@ -15,14 +15,15 @@
         <h2>Nom du repas</h2>
         <p>Glycémie + color + date + heure ++</p>
         <p>Adresse du json : <a href="{{json}}">{{json}}</a></p>
+        <p>{{toto}}</p>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['json'],
+        props: ['json','meals','toto'],
         ready: function() {
-            console.log('WTF');
+
         }
     }
 </script>

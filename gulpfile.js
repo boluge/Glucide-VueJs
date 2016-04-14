@@ -13,7 +13,7 @@ var copy        = require('gulp-copy');
 gulp.task('webpack', function(){
   return gulp.src('js/main.js')
     .pipe(webpack( require('./webpack.config.js') ))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('js/dist'))
     .pipe(connect.reload());
 });
