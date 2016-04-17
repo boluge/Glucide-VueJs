@@ -10477,7 +10477,6 @@
 	    }
 	};
 	// </script>
-	// <!--https://laracasts.com/discuss/channels/general-discussion/vuejs-1-->
 	// <style>
 	// .mealslist {
 	//     margin: 30px;
@@ -10505,7 +10504,7 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -10517,10 +10516,20 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Json = function Json(json) {
+	var Json = function Json(url) {
 	    (0, _classCallCheck3.default)(this, Json);
 
-	    this.json = json;
+	    this.url = url;
+	    var request = new XMLHttpRequest();
+	    request.onreadystatechange = function () {
+	        console.log(this.readyState);
+	        if (this.readyState === 4) {
+	            return this.responseText;
+	            console.log(this.responseText);
+	        }
+	    };
+	    request.open('GET', this.url, true);
+	    request.send();
 	};
 
 	exports.default = Json;

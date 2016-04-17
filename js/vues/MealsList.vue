@@ -20,7 +20,8 @@
 </template>
 
 <script>
-    import Json from '../class/Json.js'
+    import Json from '../class/Json.js';
+
     export default {
         props: ['json'],
         data() {
@@ -36,4 +37,3 @@
         }
     }
 </script>
-<!--https://laracasts.com/discuss/channels/general-discussion/vuejs-1-->
