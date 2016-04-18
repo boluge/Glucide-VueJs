@@ -15,18 +15,28 @@
         <h2>Nom du repas</h2>
         <p>Glycémie + color + date + heure ++</p>
         <p>Adresse du json : <a href="{{json}}">{{json}}</a></p>
-        <p>{{meals}}</p>
     </div>
 </template>
 
 <script>
-    import Json from '../class/Json.js';
+    //import ajax from '../class/Json.js';
+    var ajax = {
+      created: function () {
+        this.hello()
+      },
+      methods: {
+        hello: function () {
+          console.log('hello from mixin!')
+        }
+      }
+    }
 
     export default {
         props: ['json'],
+        mixins: [ajax],
         data() {
             return {
-                meals: new Json(this.json)
+                meals: ajax
             }
         },
         computed: {

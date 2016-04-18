@@ -10110,7 +10110,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] js/vues/MealsList.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(12)
+	__vue_template__ = __webpack_require__(10)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10120,7 +10120,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/opt/lampp/htdocs/git/glucide-vue/js/vues/MealsList.vue"
+	  var id = "/Applications/MAMP/htdocs/Glucide-VueJs/js/vues/MealsList.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -10448,35 +10448,13 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	var _Json = __webpack_require__(10);
-
-	var _Json2 = _interopRequireDefault(_Json);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = {
-	    props: ['json'],
-	    data: function data() {
-	        return {
-	            meals: new _Json2.default(this.json)
-	        };
-	    },
-
-	    computed: {
-	        toto: function toto() {
-	            return 'Yo ça marche !';
-	        }
-	    }
-	};
-	// </script>
 	// <style>
 	// .mealslist {
 	//     margin: 30px;
@@ -10494,65 +10472,44 @@
 	//         <h2>Nom du repas</h2>
 	//         <p>Glycémie + color + date + heure ++</p>
 	//         <p>Adresse du json : <a href="{{json}}">{{json}}</a></p>
-	//         <p>{{meals}}</p>
 	//     </div>
 	// </template>
 	//
 	// <script>
+	//import ajax from '../class/Json.js';
+	var ajax = {
+	    created: function created() {
+	        this.hello();
+	    },
+	    methods: {
+	        hello: function hello() {
+	            console.log('hello from mixin!');
+	        }
+	    }
+	};
+
+	exports.default = {
+	    props: ['json'],
+	    mixins: [ajax],
+	    data: function data() {
+	        return {
+	            meals: ajax
+	        };
+	    },
+
+	    computed: {
+	        toto: function toto() {
+	            return 'Yo ça marche !';
+	        }
+	    }
+	};
+	// </script>
 
 /***/ },
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _classCallCheck2 = __webpack_require__(11);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Json = function Json(url) {
-	    (0, _classCallCheck3.default)(this, Json);
-
-	    this.url = url;
-	    var request = new XMLHttpRequest();
-	    request.onreadystatechange = function () {
-	        console.log(this.readyState);
-	        if (this.readyState === 4) {
-	            return this.responseText;
-	            console.log(this.responseText);
-	        }
-	    };
-	    request.open('GET', this.url, true);
-	    request.send();
-	};
-
-	exports.default = Json;
-
-/***/ },
-/* 11 */
 /***/ function(module, exports) {
 
-	"use strict";
-
-	exports.__esModule = true;
-
-	exports.default = function (instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	};
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"mealslist\">\n    <h2>Nom du repas</h2>\n    <p>Glycémie + color + date + heure ++</p>\n    <p>Adresse du json : <a href=\"{{json}}\">{{json}}</a></p>\n    <p>{{meals}}</p>\n</div>\n";
+	module.exports = "\n<div class=\"mealslist\">\n    <h2>Nom du repas</h2>\n    <p>Glycémie + color + date + heure ++</p>\n    <p>Adresse du json : <a href=\"{{json}}\">{{json}}</a></p>\n</div>\n";
 
 /***/ }
 /******/ ]);
