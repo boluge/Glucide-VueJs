@@ -13,10 +13,31 @@ var copy        = require('gulp-copy');
 gulp.task('webpack', function(){
   return gulp.src('js/main.js')
     .pipe(webpack( require('./webpack.config.js') ))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('js/dist'))
     .pipe(connect.reload());
 });
+
+gulp.task('lint', function(){
+  return gulp.src(['**/*.js','**/*.vue','!node_modules/**', '!dist/**'])
+    .pipe(eslint({
+    		extends: 'eslint:recommended',
+    		ecmaFeatures: {
+    		    'modules': true
+    		},
+    		rules: {
+    			'my-custom-rule': 1,
+    			'strict': 2
+    		},
+    		globals: {
+    			'jQuery':false,
+    			'$':true
+    		},
+    		envs: [
+    			'browser'
+    		]
+    	}))
+    });
 
 gulp.task('watch', function() {
     browserSync.init({
